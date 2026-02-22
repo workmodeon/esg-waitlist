@@ -62,11 +62,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 flex items-center justify-center p-4 font-sans antialiased">
       <div className="text-center z-10 max-w-2xl px-4">
-        <div className="mb-6 inline-flex p-4 bg-white rounded-2xl shadow-sm">
+        <div className="mb-8">
           <img
             src="/logo.png"
             alt="Company Logo"
-            className="h-12 w-auto object-contain"
+            className="h-16 w-auto mx-auto object-contain"
           />
         </div>
         <h1 className="text-5xl font-extrabold mb-4 text-emerald-950 leading-tight">ESG Automation Waitlist</h1>
@@ -137,4 +137,5 @@ export default function App() {
     </div>
   );
 }
+
 
