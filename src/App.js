@@ -111,7 +111,7 @@ export default function App() {
           </div>
 
           <p className="text-xl text-emerald-800/80 mb-8">
-            Join the exclusive list of companies automating their sustainability future.
+            Join the exclusive list of companies automating their sustainability future with <span className="font-bold text-emerald-700">Zissions</span>.
           </p>
 
           <button
@@ -182,3 +182,4 @@ export default function App() {
     </>
   );
 }
+
