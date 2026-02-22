@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* GREEN GROWTH EFFECT */
+@keyframes growGreen {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-growGreen {
+  animation: growGreen 2s ease-out forwards;
+}
+
+/* LOGO REVEAL */
+@keyframes logoReveal {
+  0% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-logoReveal {
+  animation: logoReveal 2s ease-out forwards;
+}
+
+/* FLOATING PARTICLES */
+@keyframes float1 {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-100px); opacity: 0; }
+}
+.animate-float1 {
+  animation: float1 2s ease-in-out forwards;
+}
+
+@keyframes float2 {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120px); opacity: 0; }
+}
+.animate-float2 {
+  animation: float2 2s ease-in-out forwards;
+}
+
+@keyframes float3 {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-140px); opacity: 0; }
+}
+.animate-float3 {
+  animation: float3 2s ease-in-out forwards;
+}
