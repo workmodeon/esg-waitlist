@@ -1,74 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* GREEN GROWTH EFFECT */
-@keyframes growGreen {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  60% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
 
-.animate-growGreen {
-  animation: growGreen 2s ease-out forwards;
-}
-
-/* LOGO REVEAL */
-@keyframes logoReveal {
-  0% {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.animate-logoReveal {
-  animation: logoReveal 2s ease-out forwards;
-}
-
-/* FLOATING PARTICLES */
-@keyframes float1 {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-100px); opacity: 0; }
-}
-.animate-float1 {
-  animation: float1 2s ease-in-out forwards;
-}
-
-@keyframes float2 {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-120px); opacity: 0; }
-}
-.animate-float2 {
-  animation: float2 2s ease-in-out forwards;
-}
-
-@keyframes float3 {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-140px); opacity: 0; }
-}
-.animate-float3 {
-  animation: float3 2s ease-in-out forwards;
-}
-/* FOREST FADE IN */
+/* FOREST FADE IN & BLUR */
 @keyframes forestReveal {
-  0% { opacity: 0; filter: blur(20px); }
-  100% { opacity: 0.25; filter: blur(6px); }
+  0% { opacity: 0; filter: blur(20px); transform: scale(1.1); }
+  100% { opacity: 0.3; filter: blur(4px); transform: scale(1); }
 }
 .animate-forestReveal {
   animation: forestReveal 2.5s ease-out forwards;
@@ -80,45 +17,47 @@
   100% { background-position: 60px 60px; }
 }
 .animate-gridMove {
-  animation: gridMove 10s linear infinite;
+  animation: gridMove 15s linear infinite;
 }
 
 /* TREE GROWING */
 @keyframes treeGrow {
-  0% { transform: scaleY(0); }
-  100% { transform: scaleY(1); }
+  0% { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
 }
 .animate-treeGrow {
-  animation: treeGrow 2s ease-out forwards;
+  animation: treeGrow 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+  animation-delay: 0.5s;
 }
 
-/* LOGO REVEAL */
+/* LOGO CINEMATIC REVEAL */
 @keyframes logoReveal {
-  0% { transform: scale(2); opacity: 0; }
-  60% { opacity: 1; }
-  100% { transform: scale(1); }
+  0% { transform: scale(1.5); opacity: 0; filter: brightness(0) invert(1); }
+  50% { opacity: 0.5; filter: brightness(1) invert(0); }
+  100% { transform: scale(1); opacity: 1; }
 }
 .animate-logoReveal {
   animation: logoReveal 2.2s ease-out forwards;
+  animation-delay: 0.8s;
 }
 
 /* LEAF PARTICLES */
 .leaf {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: #10b981;
-  border-radius: 50%;
+  border-radius: 2px 10px; /* Makes it leaf-shaped */
   opacity: 0;
 }
 
 @keyframes leafFloat {
-  0% { transform: translateY(40px); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-60px); opacity: 0; }
+  0% { transform: translateY(100px) rotate(0deg); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-150px) rotate(360deg); opacity: 0; }
 }
 
-.animate-leaf1 { animation: leafFloat 2s ease-out forwards; animation-delay: 0.2s; }
-.animate-leaf2 { animation: leafFloat 2s ease-out forwards; animation-delay: 0.4s; }
-.animate-leaf3 { animation: leafFloat 2s ease-out forwards; animation-delay: 0.6s; }
-.animate-leaf4 { animation: leafFloat 2s ease-out forwards; animation-delay: 0.8s; }
+.animate-leaf1 { animation: leafFloat 2.5s ease-out forwards; animation-delay: 1.0s; }
+.animate-leaf2 { animation: leafFloat 2.8s ease-out forwards; animation-delay: 1.2s; }
+.animate-leaf3 { animation: leafFloat 2.4s ease-out forwards; animation-delay: 1.4s; }
+.animate-leaf4 { animation: leafFloat 2.6s ease-out forwards; animation-delay: 1.6s; }
