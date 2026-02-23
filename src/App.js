@@ -1,4 +1,18 @@
-// Intro States
+import React, { useState, useMemo, useEffect } from 'react';
+import { 
+  Building2, User, Mail, Calendar, CheckCircle2, 
+  X, Loader2, ArrowRight, Clock
+} from 'lucide-react';
+
+const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyo0XDNh7R2oWGsWvM7Gi-L9VUuMVjCFcyvZJxnf7XvR1Bk-1QvLbzDdwMRR4o50uqiBQ/exec"; 
+
+export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState(null);
+  
+  // Intro States
   const [showIntro, setShowIntro] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
