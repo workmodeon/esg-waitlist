@@ -35,11 +35,22 @@ export default function App() {
 
   try {
     // 1️⃣ Send Email via Resend API
-    await fetch('/api/sendEmail', {
+    const emailResponse = await fetch('/api/sendEmail', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     });
+
+    if (!emailResponse.ok) {
+      let message = 'Failed to send confirmation email';
+      try {
+        const body = await emailResponse.json();
+        if (body?.error) message = body.error;
+      } catch (_) {
+        // Keep fallback message when response is not JSON
+      }
+      throw new Error(message);
+    }
 
     // 2️⃣ Send Data to Google Sheet
     await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
@@ -65,7 +76,7 @@ export default function App() {
     }, 3000);
 
   } catch (err) {
-    setError("Something went wrong. Please try again.");
+    setError(err?.message || "Something went wrong. Please try again.");
   } finally {
     setIsSubmitting(false);
   }
