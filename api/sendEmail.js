@@ -13,15 +13,27 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'Zissions <suhasani@zissions.com>',
       to: email,
-      subject: 'You’re on the Zissions Early Access List 🌱',
+      subject: 'You’re on the Zissions ESG Waitlist 🌱',
       html: `
-        <div style="font-family:Arial;padding:20px">
-          <h2>Welcome to Zissions</h2>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #1f2937; padding: 20px;">
+          
           <p>Hi ${personName},</p>
-          <p>You’re officially on our ESG automation early access list.</p>
-          <p>We’ll connect with you before your demo date: <strong>${demoDate}</strong></p>
+
+          <p>
+            Thank you for registering at <strong>Zissions</strong> for our ESG automation waitlist!
+            We have noted your availability for a demo on 
+            <strong>${demoDate}</strong>.
+          </p>
+
+          <p>
+            We will contact you soon.
+          </p>
+
           <br/>
-          <p>– Team Zissions</p>
+
+          <p>Best regards,<br/>
+          <strong>The ESG Team</strong></p>
+
         </div>
       `,
     });
@@ -29,6 +41,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
 
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 }
