@@ -67,7 +67,6 @@ export default function App() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/90 via-emerald-950/40 to-emerald-950" />
         
-        {/* Floating Mist Particles */}
         <div className="absolute inset-0 opacity-20">
             {[...Array(5)].map((_, i) => (
                 <div key={i} className="absolute bg-emerald-100 rounded-full blur-3xl animate-blob"
@@ -83,10 +82,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* --- MAIN CONTENT --- */}
       <main className="relative z-10 w-full max-w-4xl px-6 text-center">
-        
-        {/* LOGO - Placed at the top with a subtle glow */}
         <div className="mb-12 animate-in fade-in duration-1000">
           <img 
             src="/logo.png" 
@@ -130,7 +126,6 @@ export default function App() {
         </header>
       </main>
 
-      {/* --- CLASSY GLASS MODAL --- */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-emerald-950/80 backdrop-blur-md animate-in fade-in duration-500" onClick={() => setIsOpen(false)} />
@@ -170,9 +165,23 @@ export default function App() {
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input required type="email" name="email" placeholder="Official Email" onChange={handleInputChange} className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-emerald-500 outline-none transition-all" />
                   </div>
-                  <div className="relative">
-                    <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                    <input required type="date" name="demoDate" min={new Date().toISOString().split('T')[0]} placeholder="Your availability" onChange={handleInputChange} className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-emerald-500 outline-none transition-all" />
+
+                  {/* MODIFIED SECTION: YOUR AVAILABILITY */}
+                  <div className="pt-2">
+                    <label className="text-[10px] uppercase tracking-[0.15em] text-slate-400 font-bold mb-2 block ml-1">
+                      Your Availability
+                    </label>
+                    <div className="relative group">
+                      <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={18} />
+                      <input 
+                        required 
+                        type="date" 
+                        name="demoDate" 
+                        min={new Date().toISOString().split('T')[0]} 
+                        onChange={handleInputChange} 
+                        className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-emerald-500 outline-none transition-all cursor-pointer" 
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -189,4 +198,3 @@ export default function App() {
     </div>
   );
 }
-
