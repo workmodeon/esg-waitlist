@@ -3,11 +3,9 @@ import {
   Building2, User, Mail, Calendar, CheckCircle2, 
   X, Loader2, ArrowRight, Clock, Leaf 
 } from 'lucide-react';
-await fetch('/api/sendEmail', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(formData)
-});
+
+
+
 const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyo0XDNh7R2oWGsWvM7Gi-L9VUuMVjCFcyvZJxnf7XvR1Bk-1QvLbzDdwMRR4o50uqiBQ/exec"; 
 
 export default function App() {
@@ -30,31 +28,48 @@ export default function App() {
     return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-    try {
-      await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      setIsSuccess(true);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setError(null);
+
+  try {
+    // 1️⃣ Send Email via Resend API
+    await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    // 2️⃣ Send Data to Google Sheet
+    await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    setIsSuccess(true);
+
+    setTimeout(() => {
+      setIsOpen(false);
       setTimeout(() => {
-        setIsOpen(false);
-        setTimeout(() => {
-          setIsSuccess(false);
-          setFormData({ companyName: '', personName: '', email: '', demoDate: '' });
-        }, 500);
-      }, 3000);
-    } catch (err) {
-      setError("Connection error. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+        setIsSuccess(false);
+        setFormData({
+          companyName: '',
+          personName: '',
+          email: '',
+          demoDate: ''
+        });
+      }, 500);
+    }, 3000);
+
+  } catch (err) {
+    setError("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -202,4 +217,5 @@ export default function App() {
     </div>
   );
 }
+
 
