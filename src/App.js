@@ -143,7 +143,7 @@ export default function App() {
           
           <p className="text-lg md:text-xl text-emerald-100/70 max-w-2xl mx-auto leading-relaxed mb-12">
             Join the exclusive list of companies scaling their green impact with <span className="text-emerald-400 font-semibold tracking-wide">ZISSIONS</span>.
-          <br
+          <br />
               </p>
 
           <div className="flex flex-col items-center gap-6">
