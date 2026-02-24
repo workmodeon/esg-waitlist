@@ -16,13 +16,17 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "/api/$1.js"
     },
     {
       "handle": "filesystem"
     },
     {
-      "src": "/.*",
+      "src": "/(.*)",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
       "dest": "/index.html"
     }
   ]
