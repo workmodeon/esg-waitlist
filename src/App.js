@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Building2, User, Mail, Calendar, CheckCircle2, 
+  Building2, User, Mail, Phone, Calendar, CheckCircle2, 
   X, Loader2, ArrowRight, Clock, Leaf 
 } from 'lucide-react';
 
@@ -14,6 +14,7 @@ export default function App() {
     companyName: '',
     personName: '',
     email: '',
+    phoneNumber: '',
     demoDate: ''
   });
 
@@ -58,6 +59,7 @@ export default function App() {
           companyName: '',
           personName: '',
           email: '',
+          phoneNumber: '',
           demoDate: ''
         });
       }, 500);
@@ -203,11 +205,15 @@ export default function App() {
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input required type="email" name="email" placeholder="Official Email" onChange={handleInputChange} className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-emerald-500 outline-none transition-all" />
                   </div>
+                  <div className="relative">
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                    <input required type="tel" name="phoneNumber" placeholder="Phone Number" onChange={handleInputChange} className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-emerald-500 outline-none transition-all" />
+                  </div>
 
-                  {/* MODIFIED SECTION: YOUR AVAILABILITY */}
+                  {/* AVAILABILITY SECTION */}
                   <div className="pt-2">
                     <label className="text-[10px] uppercase tracking-[0.15em] text-slate-400 font-bold mb-2 block ml-1">
-                      Your Availability
+                      When can we have a conversation with you
                     </label>
                     <div className="relative group">
                       <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={18} />

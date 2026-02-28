@@ -82,9 +82,9 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Missing RESEND_API_KEY on server' });
   }
 
-  const { companyName, personName, email, demoDate } = req.body || {};
+  const { companyName, personName, email, phoneNumber, demoDate } = req.body || {};
 
-  if (!companyName || !personName || !email || !demoDate) {
+  if (!companyName || !personName || !email || !phoneNumber || !demoDate) {
     return res.status(400).json({ error: 'Missing required form fields' });
   }
 
@@ -137,6 +137,7 @@ module.exports = async function handler(req, res) {
       companyName: companyName,
       personName: personName,
       email: email,
+      phoneNumber: phoneNumber,
       demoDate: demoDate,
     });
 
